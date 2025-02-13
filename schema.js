@@ -10,6 +10,14 @@ const typeDefs = gql`
     rating: Float!
   }
 
+  input MovieInput {
+    name: String!
+    director_name: String!
+    production_house: String!
+    release_date: String!
+    rating: Float!
+  }
+
   type Query {
     getAllMovies: [Movie]
     getMovieById(id: ID!): Movie
@@ -17,6 +25,7 @@ const typeDefs = gql`
 
   type Mutation {
     addMovie(name: String!, director_name: String!, production_house: String!, release_date: String!, rating: Float!): Movie
+    addMoviesBulk(movies: [MovieInput]!): [Movie]
     updateMovie(id: ID!, name: String, director_name: String, production_house: String, release_date: String, rating: Float): Movie
     deleteMovie(id: ID!): String
   }
